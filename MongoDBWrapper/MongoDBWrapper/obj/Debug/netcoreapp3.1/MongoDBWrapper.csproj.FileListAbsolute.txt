@@ -7,7 +7,6 @@ C:\Users\Marcus\Source\Repos\xxxmpsxxx\mongoDbWrapper\MongoDBWrapper\MongoDBWrap
 C:\Users\Marcus\Source\Repos\xxxmpsxxx\mongoDbWrapper\MongoDBWrapper\MongoDBWrapper\obj\Debug\netcoreapp3.1\MongoDBWrapper.csprojAssemblyReference.cache
 C:\Users\Marcus\Source\Repos\xxxmpsxxx\mongoDbWrapper\MongoDBWrapper\MongoDBWrapper\obj\Debug\netcoreapp3.1\MongoDBWrapper.AssemblyInfoInputs.cache
 C:\Users\Marcus\Source\Repos\xxxmpsxxx\mongoDbWrapper\MongoDBWrapper\MongoDBWrapper\obj\Debug\netcoreapp3.1\MongoDBWrapper.AssemblyInfo.cs
-C:\Users\Marcus\Source\Repos\xxxmpsxxx\mongoDbWrapper\MongoDBWrapper\MongoDBWrapper\obj\Debug\netcoreapp3.1\MongoDBWrapper.csproj.CoreCompileInputs.cache
 C:\Users\Marcus\Source\Repos\xxxmpsxxx\mongoDbWrapper\MongoDBWrapper\MongoDBWrapper\obj\Debug\netcoreapp3.1\MongoDBWrapper.dll
 C:\Users\Marcus\Source\Repos\xxxmpsxxx\mongoDbWrapper\MongoDBWrapper\MongoDBWrapper\obj\Debug\netcoreapp3.1\MongoDBWrapper.pdb
 C:\Users\Marcus\Source\Repos\xxxmpsxxx\mongoDbWrapper\MongoDBWrapper\MongoDBWrapper\obj\Debug\netcoreapp3.1\MongoDBWrapper.genruntimeconfig.cache
