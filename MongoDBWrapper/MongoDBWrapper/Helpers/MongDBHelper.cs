@@ -1,7 +1,9 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace MongoDBWrapper.Helpers
@@ -51,7 +53,46 @@ namespace MongoDBWrapper.Helpers
         public long SelectCount<T>(string collectionName, string field, T value)
         {
             var collection = _database.GetCollection<BsonDocument>(collectionName);
-            return collection.Find(Builders.FilterEq<T>(field, value)).CountDocuments;
+            return collection.Find(Builders.FilterEq<T>(field, value)).CountDocuments();
+        }
+
+        public List<T> Select<T>(string collectionName, FilterDefinition<BsonDocument> filter)
+        {
+            var collection = _database.GetCollection<BsonDocument>(collectionName);
+            if (filter == null)
+                filter = new BsonDocument();
+            var result = collection.Find(filter).ToList();
+            var returnList = new List<T>();
+            foreach (var item in result)
+            {
+                returnList.Add(BsonSerializer.Deserialize<T>(item));
+            }
+
+            return returnList;
+        }
+
+        public T SelectOne<T>(string collectionName, FilterDefinition<BsonDocument> filter)
+        {
+            var collection = _database.GetCollection<BsonDocument>(collectionName);
+            var result = collection.Find(filter).ToList();
+            if (result.Count > 1)
+                throw new Exception("To many results");
+
+            return BsonSerializer.Deserialize<T>(result.ElementAt(default(int)));
+        }
+
+        public bool Insert(string collectionName, BsonDocument doc)
+        {
+            try
+            {
+                var collection = _database.GetCollection<BsonDocument>(collectionName);
+                collection.InsertOne(doc);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public void Dispose()
