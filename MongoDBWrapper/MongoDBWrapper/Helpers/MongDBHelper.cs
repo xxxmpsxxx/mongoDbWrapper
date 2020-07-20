@@ -19,6 +19,7 @@ namespace MongoDBWrapper.Helpers
             _database = _client.GetDatabase(dbName);
         }
 
+        #region Select        
         public long? SelectCount(string collectionName)
         {
             try
@@ -80,7 +81,9 @@ namespace MongoDBWrapper.Helpers
 
             return BsonSerializer.Deserialize<T>(result.ElementAt(default(int)));
         }
+        #endregion
 
+        #region Insert        
         public bool Insert(string collectionName, BsonDocument doc)
         {
             try
@@ -94,6 +97,163 @@ namespace MongoDBWrapper.Helpers
                 return false;
             }
         }
+
+        public bool Insert<T>(string collectionName, T doc)
+        {
+            try
+            {
+                var collection = _database.GetCollection<BsonDocument>(collectionName);
+                var bDoc = doc.ToBsonDocument(); //se precisar retornar o ID, dessa forma ja volta preenchido;
+                collection.InsertOne(bDoc);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool InsertMany<T>(string collectionName, IEnumerable<T> documents)
+        {
+            try
+            {
+                var docs = new List<BsonDocument>();
+                for (int i = 0; i < documents.Count(); i++)
+                {
+                    docs[i] = documents.ElementAt(i).ToBsonDocument();
+                }
+                var collection = _database.GetCollection<BsonDocument>(collectionName);
+                collection.InsertMany(docs);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        #region Update        
+        public bool UpdateOne(string collectionName, FilterDefinition<BsonDocument> filter, UpdateDefinition<BsonDocument> update)
+        {
+            try
+            {
+                var collection = _database.GetCollection<BsonDocument>(collectionName);
+                collection.UpdateOne(filter, update);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool UpdateOne(string collectionName, string field, string value, UpdateDefinition<BsonDocument> update)
+        {
+            try
+            {
+                var filter = Builders.FilterEq(field, value);
+                var collection = _database.GetCollection<BsonDocument>(collectionName);
+                collection.UpdateOne(filter, update);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                string xx = ex.Message;
+                return false;
+            }
+        }
+
+        public bool UpdateArray<T>(string collectionName, string arrayField, List<T> list, FilterDefinition<BsonDocument> filter)
+        {
+            try
+            {
+                var collection = _database.GetCollection<BsonDocument>(collectionName);
+                var update = Builders<BsonDocument>.Update.PushEach(arrayField, list);
+                collection.FindOneAndUpdate<BsonDocument>(filter, update);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        #region Delete        
+        public bool DeleteOne(string collectionName, FilterDefinition<BsonDocument> filter)
+        {
+            try
+            {
+                var collection = _database.GetCollection<BsonDocument>(collectionName);
+                collection.DeleteOne(filter);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteOne(string collectionName, string field, string value)
+        {
+            try
+            {
+                var filter = Builders.FilterEq(field, value);
+                var collection = _database.GetCollection<BsonDocument>(collectionName);
+                collection.DeleteOne(filter);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteOne(string collectionName, string field, ObjectId value)
+        {
+            try
+            {
+                var filter = Builders.FilterEq<ObjectId>(field, value);
+                var collection = _database.GetCollection<BsonDocument>(collectionName);
+                collection.DeleteOne(filter);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteOne<T>(string collectionName, string field, T value)
+        {
+            try
+            {
+                var filter = Builders.FilterEq<T>(field, value);
+                var collection = _database.GetCollection<BsonDocument>(collectionName);
+                collection.DeleteOne(filter);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteMany(string collectionName, FilterDefinition<BsonDocument> filter)
+        {
+            try
+            {
+                var collection = _database.GetCollection<BsonDocument>(collectionName);
+                collection.DeleteMany(filter);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
 
         public void Dispose()
         {

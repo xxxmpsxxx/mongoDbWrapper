@@ -10,3 +10,11 @@ C:\Users\Marcus\Source\Repos\xxxmpsxxx\mongoDbWrapper\MongoDBWrapper\MongoDBWrap
 C:\Users\Marcus\Source\Repos\xxxmpsxxx\mongoDbWrapper\MongoDBWrapper\MongoDBWrapper\obj\Debug\netcoreapp3.1\MongoDBWrapper.dll
 C:\Users\Marcus\Source\Repos\xxxmpsxxx\mongoDbWrapper\MongoDBWrapper\MongoDBWrapper\obj\Debug\netcoreapp3.1\MongoDBWrapper.pdb
 C:\Users\Marcus\Source\Repos\xxxmpsxxx\mongoDbWrapper\MongoDBWrapper\MongoDBWrapper\obj\Debug\netcoreapp3.1\MongoDBWrapper.genruntimeconfig.cache
+C:\Users\Marcus\Source\Repos\xxxmpsxxx\mongoDbWrapper\MongoDBWrapper\MongoDBWrapper\bin\Debug\netcoreapp3.1\DnsClient.dll
+C:\Users\Marcus\Source\Repos\xxxmpsxxx\mongoDbWrapper\MongoDBWrapper\MongoDBWrapper\bin\Debug\netcoreapp3.1\MongoDB.Bson.dll
+C:\Users\Marcus\Source\Repos\xxxmpsxxx\mongoDbWrapper\MongoDBWrapper\MongoDBWrapper\bin\Debug\netcoreapp3.1\MongoDB.Driver.dll
+C:\Users\Marcus\Source\Repos\xxxmpsxxx\mongoDbWrapper\MongoDBWrapper\MongoDBWrapper\bin\Debug\netcoreapp3.1\MongoDB.Driver.Core.dll
+C:\Users\Marcus\Source\Repos\xxxmpsxxx\mongoDbWrapper\MongoDBWrapper\MongoDBWrapper\bin\Debug\netcoreapp3.1\MongoDB.Libmongocrypt.dll
+C:\Users\Marcus\Source\Repos\xxxmpsxxx\mongoDbWrapper\MongoDBWrapper\MongoDBWrapper\bin\Debug\netcoreapp3.1\SharpCompress.dll
+C:\Users\Marcus\Source\Repos\xxxmpsxxx\mongoDbWrapper\MongoDBWrapper\MongoDBWrapper\obj\Debug\netcoreapp3.1\MongoDBWrapper.csproj.CoreCompileInputs.cache
+C:\Users\Marcus\Source\Repos\xxxmpsxxx\mongoDbWrapper\MongoDBWrapper\MongoDBWrapper\obj\Debug\netcoreapp3.1\MongoDBWrapper.csproj.CopyComplete
